@@ -1,0 +1,8 @@
+class AddConfirmableToUsers < ActiveRecord::Migration[5.1]
+  def change
+    change_table(:users) do |t| 
+      t.string   :unconfirmed_email
+    end
+    add_index :users, :confirmation_token, :unique => true 
+  end
+end
