@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :birthday ])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :birthday, :user_type])
   end
 
   def after_sign_up_path_for(resource)
