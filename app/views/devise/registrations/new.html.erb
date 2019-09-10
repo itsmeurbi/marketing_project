@@ -31,6 +31,11 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :user_type %><br />
+    <%= f.collection_select(:user_type, user_type, :first, :last) %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
