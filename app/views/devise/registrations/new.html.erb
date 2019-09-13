@@ -32,8 +32,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :user_type %><br />
-    <%= f.collection_select(:user_type, user_type, :first, :last) %>
+    <%= f.label :role_id %><br />
+    <%= f.collection_select(:role_id, user_type, :id, :name) %>
   </div>
 
   <div class="actions">
