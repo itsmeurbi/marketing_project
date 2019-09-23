@@ -13,6 +13,7 @@ class CorporateDashboard < Administrate::BaseDashboard
     ceo_name: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    companies: Field::HasMany
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -25,6 +26,7 @@ class CorporateDashboard < Administrate::BaseDashboard
   name
   ceo_name
   created_at
+  companies
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -35,6 +37,7 @@ class CorporateDashboard < Administrate::BaseDashboard
   ceo_name
   created_at
   updated_at
+  companies
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -43,6 +46,7 @@ class CorporateDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   name
   ceo_name
+  companies
   ].freeze
 
   # COLLECTION_FILTERS

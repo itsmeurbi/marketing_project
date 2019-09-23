@@ -1,2 +1,2 @@
-<h1> SUPER ADMIN </h1>
-<%= link_to 'Gestionar', admin_root_path %>
+<h1> <%= t('dashboard.roles.admin') %> </h1>
+<%= link_to t('dashboard.admin_view.manage'), admin_root_path, class: 'btn btn-primary' %>

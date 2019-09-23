@@ -1,2 +1,2 @@
 <%= render set_user %>
-<%= link_to 'Salir', destroy_user_session_path, method: :delete, class: 'btn btn-primary', data: { confirm: "Estás seguro?" } if user_signed_in? %>
+<%= link_to t('devise.shared.links.sign_out'), destroy_user_session_path, method: :delete, class: 'btn btn-primary', data: { confirm: t('modals.confirm') } if user_signed_in? %>

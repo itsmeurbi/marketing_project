@@ -40,7 +40,6 @@ es:
               too_short: 'La contraseña es demasiado corta'
             password_confirmation:
               confirmation: 'Las contraseñas no coinciden'
-
   devise:
     confirmations:
       confirmed: "Su cuenta ha sido confirmada."
@@ -93,6 +92,7 @@ es:
         sign_up: "Registrarse"
         sign_in: "Iniciar Sesión"
         forgot_your_password: "Olvidaste tu contraseña"
+        sign_out: "Salir"
     sessions:
       signed_in: "Ha iniciado sesión satisfactoriamente."
       signed_out: "Ha cerrado la sesión satisfactoriamente."

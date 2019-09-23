@@ -30,5 +30,11 @@ module Admin
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
+
+    private 
+
+      def permitted_params
+        params.require(:corporate).permit(:name, :ceo_name, company_attributes: [:name, :ceo_name, client_attributes: [:name]])
+      end
   end
 end

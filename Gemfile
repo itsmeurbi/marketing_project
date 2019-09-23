@@ -34,6 +34,7 @@ gem 'administrate'
 gem 'annotate'
 gem 'bootstrap'
 gem 'devise'
+gem 'font-awesome-sass'
 gem 'jquery-rails'
 gem 'rolify'
 

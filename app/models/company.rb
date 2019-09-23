@@ -10,4 +10,6 @@
 #
 
 class Company < ApplicationRecord
+  has_one :client
+  accepts_nested_attributes_for :client, reject_if: ->(attributes){ attributes['name'].blank? }, allow_destroy: true
 end

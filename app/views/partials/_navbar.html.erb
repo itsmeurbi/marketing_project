@@ -1,0 +1,8 @@
+<nav class="navbar navbar-light bg-light">
+  <%= link_to t('navbar.agencia'), root_path %>
+  <form class="form-inline">
+    <%= link_to user_signed_in? ? user_path(current_user.id) : new_user_session_path do %>
+      <i class="fas fa-user-circle"></i>
+    <% end %>
+  </form>
+</nav>
