@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    resources :users
     resources :campaigns
-    resources :clients
-    resources :companies
-    resources :corporates
 
-    root to: "users#index"
+    root to: "campaigns#index"
   end
 
   root 'dashboard#index'
