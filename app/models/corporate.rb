@@ -10,6 +10,6 @@
 #
 
 class Corporate < ApplicationRecord
-  has_many :companys
-  accepts_nested_attributes_for :companys, reject_if: ->(attributes){ attributes['name'].blank? }, allow_destroy: true
+  has_many :companies, inverse_of: :corporate
+  accepts_nested_attributes_for :companies, reject_if: :all_blank, allow_destroy: true
 end

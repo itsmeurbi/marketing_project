@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'annotate'
 gem 'bootstrap'
+gem 'cocoon'
 gem 'devise'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
