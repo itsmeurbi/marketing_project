@@ -10,4 +10,10 @@
 #
 
 class Company < ApplicationRecord
+  has_one :client
+  belongs_to :corporate, optional: true
+  accepts_nested_attributes_for :client, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :corporate, reject_if: :all_blank, allow_destroy: true
+
+  scope :without_corporate, -> { where(:corporate_id => nil)}
 end

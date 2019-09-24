@@ -1,0 +1,14 @@
+<%= form_for @company do |f| %>
+  <%= f.text_field :name, placeholder: "Nombre" %>
+  <%= f.text_field :ceo_name, placeholder: "Nombre CEO" %>
+  <div class="corporate">
+    <%= f.select :corporate_id, corporates.collect {|c| [c.name, c.id]}, prompt: "Selecciona un corporativo"  %>
+    <a id="add-btn" class="btn btn-primary"> Registrar Corporativo </a>
+    <div class="new-corp">
+      <%= f.fields_for :corporate, Corporate.new do |corp| %>
+        <%= render 'corporates/form', f: corp %>
+      <%end%>
+    </div> 
+  </div> 
+  <%= f.submit "Crear", class: 'btn btn-primary' %>
+<% end %>

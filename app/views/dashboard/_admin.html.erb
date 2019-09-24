@@ -1,2 +1,30 @@
-<h1> SUPER ADMIN </h1>
-<%= link_to 'Gestionar', admin_root_path %>
+<h1> <%= t('dashboard.roles.admin') %> </h1>
+<%= link_to t('dashboard.admin_view.manage'), "#", class: 'btn btn-primary' %>
+
+<h4> Personal Registrado </h4>
+<table>
+  <tr> 
+    <th> Nombre </th>
+    <th> Área </th>
+  </tr>
+  <% users.each do |user| %>
+  <tr> 
+    <td> <%= user.name %> <td>
+    <td> <%= user.role.name %> <td>
+  </tr> 
+  <% end %>
+</table>
+
+<h4> Empresas Registradas </h4>
+<table>
+  <tr> 
+    <th> Nombre </th>
+    <th> Coorporativo </th>
+  </tr>
+  <% companies.each do |comp| %>
+  <tr> 
+    <td> <%= comp.name %> <td>
+    <td> <%= get_corporate(comp.corporate_id) if comp.corporate_id != nil %> <td>
+  </tr> 
+  <% end %>
+</table>

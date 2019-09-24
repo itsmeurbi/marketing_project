@@ -1,4 +1,4 @@
 <h1> Página principal </h1>
 <p> Agencia de Marketing Cano </p>
-<%= link_to 'Iniciar sesión', new_user_session_path, class: 'btn btn-primary' %>
-<%= link_to 'Registrarse', new_user_registration_path, class: 'btn btn-primary' %>
+<%= link_to t('devise.shared.links.sign_in'), new_user_session_path, class: 'btn btn-primary' %>
+<%= link_to t('devise.shared.links.sign_up'), new_user_registration_path, class: 'btn btn-primary' %>

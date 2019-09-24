@@ -1,0 +1,11 @@
+es:
+  dashboard:
+    roles:
+      admin: 'Administrador'
+      rh: 'Recursos Humanos'
+      sales: 'Administrador de Ventas'
+      generador: 'Generador de Contenido'
+      designer: 'Diseñador'
+      community: 'Community Manager' 
+    admin_view: 
+      manage: 'Gestionar'     

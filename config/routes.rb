@@ -1,15 +1,8 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :users
     resources :campaigns
-    resources :campaign_employees
-    resources :clients
-    resources :companies
-    resources :corporates
-    resources :nodos
-    resources :reds
 
-    root to: "users#index"
+    root to: "campaigns#index"
   end
 
   root 'dashboard#index'
@@ -19,4 +12,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     confirmations: 'users/confirmations'
   }
+
+  resources :users
+  resources :companies
+  resources :corporates
 end

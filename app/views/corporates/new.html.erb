@@ -1,0 +1,19 @@
+<h1> Registrar Corporativo </h1>
+<%= form_for @corporate do |f| %>
+  <%= render 'form', f: f %>
+  <a id="add-company" class="btn btn-primary"> Agregar Empresas </a>
+  <div class="companies">
+    <h4> Seleccionar empresas </h4>
+    <% Company.without_corporate.each do |comp| %>
+      <%= check_box :companies_id, comp.id %>
+      <%= label :companies_id, comp.name %>
+    <% end %>
+    <div class="add-companies">
+      <%= f.fields_for :companies do |comp| %>
+        <%= render 'company_fields', f: comp %>
+      <% end %>
+      <%= link_to_add_association 'Registrar Empresa', f, :companies, partial: 'company_fields' %>
+    </div>
+  </div>
+  <%= f.submit "Crear", class: 'btn btn-primary'%>
+<% end %>

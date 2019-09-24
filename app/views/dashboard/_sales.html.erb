@@ -1,1 +1,26 @@
-<h1> VENTAS </h1>
+<h1> <%= t('dashboard.roles.sales') %> </h1>
+<table>
+  <tr> 
+    <th> Empresas registadas </th>
+  </tr>
+  <% companies.each do |comp| %>
+  <tr> 
+    <td> <%= comp.name %> <td>
+  </tr> 
+  <% end %>
+</table>
+
+<%= link_to 'Registrar Empresa', new_company_path, class: 'btn btn-primary'%>
+
+<table>
+  <tr> 
+    <th> Corporativos registados </th>
+  </tr>
+  <% corporates.each do |corp| %>
+  <tr> 
+    <td> <%= corp.name %> <td>
+  </tr> 
+  <% end %>
+</table>
+
+<%= link_to 'Registrar Corporativo', new_corporate_path, class: 'btn btn-primary'%>

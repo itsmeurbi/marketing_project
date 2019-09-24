@@ -7,4 +7,20 @@ module DashboardHelper
       end
     end 
   end
+
+  def companies
+    Company.all
+  end
+
+  def corporates 
+    Corporate.all
+  end
+
+  def users
+    User.all
+  end
+
+  def get_corporate(id) 
+    Corporate.find(id).name
+  end
 end
