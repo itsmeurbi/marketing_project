@@ -33,7 +33,7 @@
 
   <div class="field pt-2 text-center">
     <%= f.label :role_id %><br />
-    <%= f.collection_select(:role_id, user_type, :id, :name, {},  {class: 'form-control' } ) %>
+    <%= f.collection_select(:role_id, user_type, :id, :descr, {},  {class: 'form-control' } ) %>
   </div>
 
   <div class="actions text-center pt-2">
