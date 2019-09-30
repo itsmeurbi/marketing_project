@@ -6,11 +6,13 @@
   <tr> 
     <th> Nombre </th>
     <th> Área </th>
+    <th> Fecha </th>
   </tr>
   <% users.each do |user| %>
   <tr> 
     <td> <%= user.name %> <td>
-    <td> <%= user.role.name %> <td>
+    <td> <%= user.role.descr %> <td>
+    <td> <%= l user.created_at, format: :short  %> <td>
   </tr> 
   <% end %>
 </table>
@@ -25,6 +27,18 @@
   <tr> 
     <td> <%= comp.name %> <td>
     <td> <%= get_corporate(comp.corporate_id) if comp.corporate_id != nil %> <td>
+  </tr> 
+  <% end %>
+</table>
+
+<h4> Corporativos Registradas </h4>
+<table>
+  <tr> 
+    <th> Nombre </th>
+  </tr>
+  <% corporates.each do |corp| %>
+  <tr> 
+    <td> <%= corp.name %> <td>
   </tr> 
   <% end %>
 </table>
