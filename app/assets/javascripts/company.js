@@ -1,12 +1,25 @@
 $(document).on('turbolinks:load', function() {
-  $('.new-corp').hide();
-  $('#add-btn').on('click', function() {
-    if (document.getElementsByClassName("new-corp")[0].style.display == "none") {
-      $('#add-btn').html('Cancelar')
-      $('.new-corp').show();
+  $('.corporate').hide();
+  $('#corp').on('click', function() {
+    if ($(this).is(':checked')) {
+      $('.corporate').show();
     } else {
-      $('#add-btn').html('Agregar Corporativo')
-      $('.new-corp').hide();
+      $('.corporate').hide();
     }   
   });
+
+  $('#rep').on('click', function() {
+    if ($(this).is(':checked')) {
+      $('.info-repre').hide();
+    } else {
+      $('.info-repre').show();
+    }   
+  });
+
+  $('#submit').on('click', function() {
+    if ($('#repre').is(':checked') && $('#select-corp').value == 0){
+      $('#select-corp').addClass('highlight');
+      return false;
+    }
+  })
 });

@@ -1,0 +1,16 @@
+<h1> Editar Campaña </h1>
+<%= form_for @campaign, html: { class: 'two-columns' } do |f| %>
+  <div class="row">
+    <div class="col-5">
+      <%= render 'form', f: f%>
+    </div>
+    <div class="col-5">
+      <h5> Red semántica </h5>
+      <%= link_to 'Añadir red semántica', '#' %>
+    </div>
+  </div>
+  <div class="two-btns-column">
+      <%= f.submit 'Crear', class: 'btn btn-primary mt-5' %>
+      <%= link_to 'Regresar', root_path, class: 'btn btn-primary my-5'  %>
+  </div>
+<% end %>

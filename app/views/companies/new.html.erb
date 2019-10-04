@@ -1,2 +1,31 @@
 <h1> Registrar Empresa </h1>
-<%= render 'form' %>
+<%= form_for @company, html: { class: 'two-columns' } do |f| %>
+  <div class="row">
+    <div class="col-5">
+      <h4> Información de la empresa </h4>
+      <%= render 'shared/comp_corp_form', f: f %>
+      <div class="form-group">
+        <%= check_box :corp, 'si', id: 'corp', class: 'check-form' %>
+        <%= label :corp, 'Pertenece a un corporativo' %>
+      </div>
+      <div class="corporate">
+        <%= f.select :corporate_id, corporates.collect {|c| [c.name, c.id]}, { prompt: 'Selecciona un corporativo' }, {class: 'form-control'} %>
+      </div> 
+    </div> 
+    <div class="col-5">
+      <h4> Representante legal </h4>
+      <%= label :rep, 'Mantener el representante legal del corporativo' %>
+      <%= check_box :rep, 'si', id: 'rep' %>
+      <div class="info-repre">
+        <h5> Información del representante legal </h5>
+        <%= f.fields_for :representative, @repre do |rep| %>
+          <%= render 'representatives/form', f: rep %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="buttons-div">
+    <%= f.submit 'Crear', class: 'btn btn-primary' %>
+    <%= link_to 'Regresar', root_path, class: 'btn btn-primary' %>
+  </div>
+<% end %>

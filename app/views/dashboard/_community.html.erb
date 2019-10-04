@@ -1,1 +1,23 @@
-<%= t('dashboard.roles.community') %>
+<h1> <%= t('dashboard.roles.community') %> </h1>
+
+<h4> Campañas Asignadas </h4>
+<table class="table">
+  <tr class="thead-light"> 
+    <th scope="col"> Nombre </th>
+    <th scope="col"> Objetivo </th>
+    <th scope="col"> Fecha inicio </th>
+    <th scope="col"> Fecha fin </th>
+    <th scope="col"> Cliente </th>
+    <th scope="col"> Opciones </th>
+  </tr>
+  <% campaigns_comm.each do |campaign| %>
+  <tr scope="row"> 
+    <td> <%= campaign.name %> </td>
+    <td> <%= campaign.description %> </td>
+    <td> <%= campaign.start_date %> </td>
+    <td> <%= campaign.finish_date %> </td>
+    <td> <%= campaign.client.name %> </td>
+    <td> <%= link_to 'Editar', edit_campaign_path(campaign) %> </td>
+  </tr> 
+  <% end %>
+</table>

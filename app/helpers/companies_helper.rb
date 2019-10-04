@@ -1,5 +1,5 @@
 module CompaniesHelper
   def corporates 
-    Corporate.all
+    Corporate.all.order(:id)
   end
 end

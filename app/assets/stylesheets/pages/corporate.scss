@@ -1,0 +1,19 @@
+.add-companies {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  .btn {
+    color: white !important;
+    text-decoration: none;
+  }
+
+  .companies {
+    margin: 30px 0;
+
+    .nested-fields {
+      align-items: center;
+      display: flex;
+    }
+  }
+}

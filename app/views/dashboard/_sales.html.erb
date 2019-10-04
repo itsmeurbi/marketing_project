@@ -1,26 +1,53 @@
 <h1> <%= t('dashboard.roles.sales') %> </h1>
-<table>
-  <tr> 
-    <th> Empresas registadas </th>
+
+<h4> Clientes Registrados </h4>
+<table class="table">
+  <tr class="thead-light"> 
+    <th scope="col"> Nombre </th>
+    <th scope="col"> Empresa / Corporativo </th>
+    <th scope="col"> Campaña </th>
+  </tr>
+  <% clients.each do |client| %>
+  <tr scope="row"> 
+    <td> <%= client.name %> </td>
+    <td> <%= client.company ? client.company.name : client.corporate.name %> </td>
+    <td> <%= campaign(client.id) %> </td>
+  </tr> 
+  <% end %>
+</table>
+
+<%= link_to 'Registrar Cliente', new_client_path, class: 'btn btn-primary mb-4'%>
+
+<h4> Empresas Registradas </h4>
+<table class="table">
+  <tr class="thead-light"> 
+    <th scope="col"> Nombre </th>
+    <th scope="col"> Representante </th>
+    <th scope="col"> Coorporativo </th>
   </tr>
   <% companies.each do |comp| %>
-  <tr> 
-    <td> <%= comp.name %> <td>
+  <tr scope="row"> 
+    <td> <%= comp.name %> </td>
+    <td> <%= comp.representative ? comp.representative.name : comp.corporate.representative.name %> </td>
+    <td> <%= get_corporate(comp.corporate_id) if comp.corporate_id != nil %> </td>
   </tr> 
   <% end %>
 </table>
 
-<%= link_to 'Registrar Empresa', new_company_path, class: 'btn btn-primary'%>
+<%= link_to 'Registrar Empresa', new_company_path, class: 'btn btn-primary mb-4'%>
 
-<table>
-  <tr> 
-    <th> Corporativos registados </th>
+<h4> Corporativos Registradas </h4>
+<table class="table">
+  <tr class="thead-light"> 
+    <th scope="col"> Nombre </th>
+    <th scope="col"> Representante </th>
   </tr>
   <% corporates.each do |corp| %>
-  <tr> 
-    <td> <%= corp.name %> <td>
-  </tr> 
+    <tr scope="row"> 
+      <td> <%= corp.name %> </td>
+      <td> <%= corp.representative.name %> </td>
+    </tr> 
   <% end %>
 </table>
 
-<%= link_to 'Registrar Corporativo', new_corporate_path, class: 'btn btn-primary'%>
+<%= link_to 'Registrar Corporativo', new_corporate_path, class: 'btn btn-primary mb-4'%>
