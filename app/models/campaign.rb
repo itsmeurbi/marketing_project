@@ -10,8 +10,12 @@
 #  created_by  :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  client_id   :bigint
 #
 
 class Campaign < ApplicationRecord
+  has_many :campaign_employees
   has_many :users, through: :campaign_employees
+  belongs_to :client
+  has_one :red
 end

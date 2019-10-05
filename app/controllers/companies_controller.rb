@@ -4,10 +4,15 @@ class CompaniesController < ApplicationController
 
   def new
     @company = Company.new
+    @repre = Representative.new
   end
 
   def create 
-    @company = Company.new(company_params)
+    if params[:rep][:si] == '0'
+      @company = Company.new(company_params)
+    else
+      @company = Company.new(company_params_without_rep)
+    end
     if @company.save
       redirect_to root_path
     else
@@ -24,6 +29,10 @@ class CompaniesController < ApplicationController
   private 
 
   def company_params
-    params.require(:company).permit(:name, :ceo_name, :corporate_id, corporate_attributes: [:name, :ceo_name])
+    params.require(:company).permit(:name, :ceo_name, :rfc, :address, :razon_social, :corporate_id, representative_attributes: [:name, :rfc, :email, :tel, :cel, :position])
+  end
+
+  def company_params_without_rep 
+    params.require(:company).permit(:name, :ceo_name, :rfc, :address, :razon_social, :corporate_id).merge(representative_id: Corporate.find(params[:company][:corporate_id]).representative.id)
   end
 end

@@ -29,5 +29,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   belongs_to :role, foreign_key: "role_id"
+  has_many :campaign_employees
   has_many :campaigns, through: :campaign_employees
 end

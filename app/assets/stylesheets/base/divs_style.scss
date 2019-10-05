@@ -1,0 +1,11 @@
+.buttons-div {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.two-btns-column {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

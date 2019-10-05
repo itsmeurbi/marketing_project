@@ -1,5 +1,4 @@
 <div class="nested-fields">
-  <%= f.text_field :name, placeholder: "Nombre" %>
-  <%= f.text_field :ceo_name, placeholder: "Nombre CEO" %>
+  <%= render 'shared/comp_corp_form', f: f %>
   <%= link_to_remove_association "Eliminar", f %>
 </div>

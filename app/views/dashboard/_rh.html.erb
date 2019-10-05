@@ -1,15 +1,18 @@
 <h1> <%= t('dashboard.roles.rh') %> </h1>
-<table>
-  <tr> 
-    <th> Empleados registados </th>
+<h3> Empleados Registrados </h3>
+<table class="table">
+  <tr class="thead-light"> 
+    <th scope="col"> Nombre </th>
+    <th scope="col"> Rol </th>
+    <th scope="col"> Fecha de registro </th>
   </tr>
   <% users.each do |user| %>
-  <tr> 
-    <td> <%= user.name %> <td>
-    <td> <%= user.role.descr %> <td>
-    <td> <%= l user.created_at, format: :short  %> <td>
+  <tr scope="row"> 
+    <td> <%= user.name %> </td>
+    <td> <%= user.role.descr %> </td>
+    <td> <%= l user.created_at, format: :short  %> </td>
   </tr> 
   <% end %>
 </table>
 
-<%= link_to 'Registrar Empleado', new_user_registration_path, class: 'btn btn-primary'%>
+<%= link_to 'Registrar Empleado', new_user_registration_path, class: 'btn btn-primary my-5'%>

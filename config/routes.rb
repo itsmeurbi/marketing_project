@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   namespace :admin do
     resources :campaigns
 
@@ -13,7 +14,9 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations'
   }
 
-  resources :users
+  resources :campaigns
   resources :companies
   resources :corporates
+  resources :clients
+  resources :users
 end

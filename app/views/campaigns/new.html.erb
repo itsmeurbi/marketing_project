@@ -1,0 +1,18 @@
+<h1> Registrar Campaña </h1>
+<%= form_for @campaign, html: { class: 'two-columns' } do |f| %>
+  <div class="row">
+    <div class="col-5">
+      <%= render 'form', f: f%>
+    </div>
+    <div class="col-5">
+      <h5> Seleccionar cliente </h5>
+      <%= f.select :client_id, clients.map {|c| [c.name, c.id]}, { prompt: 'Selecciona un cliente' }, { class: 'form-control'} %>
+      <h5> Asignar Community Manager </h5>
+      <%= f.select :user_ids, c_managers.map {|c| [c.name, c.id]}, { prompt: 'Selecciona un Community Manager' }, { class: 'form-control'} %>
+    </div>
+  </div>
+  <div class="two-btns-column">
+      <%= f.submit 'Crear', class: 'btn btn-primary mt-5' %>
+      <%= link_to 'Regresar', root_path, class: 'btn btn-primary my-5'  %>
+  </div>
+<% end %>

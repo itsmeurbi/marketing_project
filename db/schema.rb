@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190930204716) do
+ActiveRecord::Schema.define(version: 20191004052414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,12 @@ ActiveRecord::Schema.define(version: 20190930204716) do
   create_table "campaign_employees", force: :cascade do |t|
     t.date "start_date"
     t.date "finish_date"
+    t.bigint "campaign_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["campaign_id"], name: "index_campaign_employees_on_campaign_id"
+    t.index ["user_id"], name: "index_campaign_employees_on_user_id"
   end
 
   create_table "campaigns", force: :cascade do |t|
@@ -30,15 +34,23 @@ ActiveRecord::Schema.define(version: 20190930204716) do
     t.string "created_by"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "client_id"
+    t.index ["client_id"], name: "index_campaigns_on_client_id"
   end
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "cellphone"
-    t.date "birthdate"
+    t.string "rfc"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "contact_name"
+    t.string "contact_tel"
+    t.string "contact_cel"
+    t.string "contact_email"
+    t.bigint "company_id"
+    t.bigint "corporate_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -47,6 +59,11 @@ ActiveRecord::Schema.define(version: 20190930204716) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "corporate_id"
+    t.string "razon_social"
+    t.string "rfc"
+    t.string "address"
+    t.bigint "representative_id"
+    t.index ["representative_id"], name: "index_companies_on_representative_id"
   end
 
   create_table "corporates", force: :cascade do |t|
@@ -54,6 +71,11 @@ ActiveRecord::Schema.define(version: 20190930204716) do
     t.string "ceo_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "razon_social"
+    t.string "rfc"
+    t.string "address"
+    t.bigint "representative_id"
+    t.index ["representative_id"], name: "index_corporates_on_representative_id"
   end
 
   create_table "nodos", force: :cascade do |t|
@@ -64,6 +86,19 @@ ActiveRecord::Schema.define(version: 20190930204716) do
 
   create_table "reds", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "campaign_id"
+    t.index ["campaign_id"], name: "index_reds_on_campaign_id"
+  end
+
+  create_table "representatives", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "rfc"
+    t.string "tel"
+    t.string "cel"
+    t.string "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -102,5 +137,7 @@ ActiveRecord::Schema.define(version: 20190930204716) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "campaigns", "clients"
+  add_foreign_key "reds", "campaigns"
   add_foreign_key "users", "roles"
 end

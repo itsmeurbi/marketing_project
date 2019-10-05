@@ -1,0 +1,27 @@
+<h1> Registrar nuevo cliente </h1>
+<%= form_for @client, html: { class: 'two-columns' } do |f| %>
+  <div class="row">
+    <div class="col-5">
+      <h5> Información del Cliente </h5>
+      <%= f.text_field :name, placeholder: "Nombre", class: 'form-control' %>
+      <%= f.text_field :email, placeholder: "Correo electrónico", class: 'form-control' %>
+      <%= f.text_field :cellphone, placeholder: "Telefono Celular", class: 'form-control' %>
+      <%= f.text_field :rfc, placeholder: "RFC", class: 'form-control' %>
+      <%= label :type, 'Tipo de cliente:' %>
+      <%= select_tag :type, options_for_select([['Corporativo', 1], ['Empresa', 2]], 2), { id: 'type' } %>
+      <%= f.select :company_id, companies.map {|c| [c.name, c.id]}, { prompt: 'Selecciona una empresa' }, { class: 'form-control', id: 'companies' } %>
+      <%= f.select :corporate_id, corporates.map {|c| [c.name, c.id]}, { prompt: 'Selecciona una coorporativo' }, { class: 'form-control', id: 'corporates' } %>
+    </div>
+    <div class="col-5">
+      <h5> Información del Contacto </h5>
+      <%= f.text_field :contact_name, placeholder: "Nombre", class: 'form-control' %>
+      <%= f.text_field :contact_email, placeholder: "Nombre CEO", class: 'form-control' %>
+      <%= f.text_field :contact_cel, placeholder: "Razón social", class: 'form-control' %>
+      <%= f.text_field :contact_tel, placeholder: "Dirección", class: 'form-control' %>
+    </div>
+  </div>
+  <div class="two-btns-column">
+    <%= f.submit 'Guardar', class: 'btn btn-primary mt-5' %>
+    <%= link_to 'Regresar', root_path, class: 'btn btn-primary my-5'%>
+  </div>
+<% end %>
