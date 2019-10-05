@@ -13,6 +13,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require bootstrap-material-design
 //= require rails-ujs
 //= require turbolinks
 //= require cocoon

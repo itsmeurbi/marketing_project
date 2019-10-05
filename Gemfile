@@ -36,6 +36,7 @@ gem 'cocoon'
 gem 'devise'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
+gem 'bootstrap-material-design', '~> 0.2.2'
 gem 'rolify'
 
 # Use Capistrano for deployment
