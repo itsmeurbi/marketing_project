@@ -21,7 +21,7 @@ module DashboardHelper
   end
 
   def users
-    User.where.not(role_id: 1).order(:id)
+    User.where.not(role_id: [1,7]).order(:id)
   end
 
   def get_corporate(id) 
@@ -30,5 +30,14 @@ module DashboardHelper
 
   def campaigns_comm
     Campaign.joins(:campaign_employees, :users).where('users.id = ?', current_user.id)
+  end
+
+  def admins 
+    User.where(role_id: 1)
+  end
+
+  def corp_or_comp(camp)
+    return Campaign.find(camp).client.company.name if Campaign.find(camp).client.company
+    return Campaign.find(camp).client.corporate.name if Campaign.find(camp).client.corporate
   end
 end

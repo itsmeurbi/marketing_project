@@ -1,0 +1,17 @@
+<h1> Agencia </h1>
+
+<h4> Administradores Registrado </h4>
+<table class="table">
+  <tr class="thead-light"> 
+    <th scope="col"> Nombre </th>
+    <th scope="col"> Fecha </th>
+  </tr>
+  <% admins.each do |admin| %>
+    <tr scope="row"> 
+      <td> <%= admin.name %> </td>
+      <td> <%= l admin.created_at, format: :short  %> </td>
+    </tr> 
+  <% end %>
+</table>
+
+<%= link_to 'Registrar Administrador', new_user_registration_path, class: 'btn btn-primary my-4'%>
