@@ -4,18 +4,18 @@
 <table class="table">
   <tr class="thead-light"> 
     <th scope="col"> Nombre </th>
-    <th scope="col"> Objetivo </th>
     <th scope="col"> Fecha inicio </th>
     <th scope="col"> Fecha fin </th>
     <th scope="col"> Cliente </th>
+    <th scope="col"> Empresa / Corporativo </th>
   </tr>
   <% campaigns.each do |campaign| %>
   <tr scope="row"> 
     <td> <%= campaign.name %> </td>
-    <td> <%= campaign.description %> </td>
     <td> <%= campaign.start_date %> </td>
     <td> <%= campaign.finish_date %> </td>
     <td> <%= campaign.client.name %> </td>
+    <td> <%= corp_or_comp(campaign.id) %> </td>
   </tr> 
   <% end %>
 </table>
@@ -39,29 +39,3 @@
 </table>
 
 <%= link_to 'Registrar Empleado', new_user_registration_path, class: 'btn btn-primary my-4'%>
-
-<h4> Empresas Registradas </h4>
-<table class="table">
-  <tr class="thead-light"> 
-    <th scope="col"> Nombre </th>
-    <th scope="col"> Coorporativo </th>
-  </tr>
-  <% companies.each do |comp| %>
-  <tr scope="row"> 
-    <td> <%= comp.name %> </td>
-    <td> <%= get_corporate(comp.corporate_id) if comp.corporate_id != nil %> </td>
-  </tr> 
-  <% end %>
-</table>
-
-<h4> Corporativos Registradas </h4>
-<table class="table">
-  <tr class="thead-light"> 
-    <th scope="col"> Nombre </th>
-  </tr>
-  <% corporates.each do |corp| %>
-  <tr scope="row"> 
-    <td> <%= corp.name %> </td>
-  </tr> 
-  <% end %>
-</table>

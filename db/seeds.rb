@@ -11,3 +11,5 @@ Role.create name: :generador, descr: "Generador de Contenido"
 Role.create name: :designer, descr: "Diseñador"
 Role.create name: :rh, descr: "Recursos Humanos"
 Role.create name: :sales, descr: "Finanzas"
+Role.create name: :agency, descr: "Agencia"
+User.create name: "Agencia", birthday: "31/07/1997", email: "agencia@gmail.com", password: "123qwe", role_id: 7
