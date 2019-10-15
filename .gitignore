@@ -12,6 +12,8 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+
+# TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/local_env.yml
 
 /node_modules
