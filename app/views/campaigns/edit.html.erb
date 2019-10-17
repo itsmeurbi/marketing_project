@@ -6,7 +6,9 @@
     </div>
     <div class="col-5">
       <h5> Red semántica </h5>
-      <%= link_to 'Añadir red semántica', '#' %>
+      <%= f.fields_for :red, @red do |red| %>
+        <%= red.text_field :name, placeholder: 'Nombre de la red', class: 'form-control' %>
+      <% end %>
     </div>
   </div>
   <div class="two-btns-column">

@@ -31,4 +31,5 @@ class User < ApplicationRecord
   belongs_to :role, foreign_key: "role_id"
   has_many :campaign_employees
   has_many :campaigns, through: :campaign_employees
+  has_and_belongs_to_many :nodos
 end

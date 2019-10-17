@@ -11,11 +11,13 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  client_id   :bigint
+#  red_id      :bigint
 #
 
 class Campaign < ApplicationRecord
   has_many :campaign_employees
   has_many :users, through: :campaign_employees
   belongs_to :client
-  has_one :red
+  belongs_to :red
+  accepts_nested_attributes_for :red, reject_if: :all_blank, allow_destroy: true
 end

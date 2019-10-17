@@ -18,7 +18,6 @@ class Company < ApplicationRecord
   has_many :clients
   belongs_to :representative, optional: true 
   belongs_to :corporate, optional: true
-  accepts_nested_attributes_for :clients, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :corporate, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :representative, reject_if: :all_blank, allow_destroy: true
 

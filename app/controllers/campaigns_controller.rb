@@ -15,10 +15,24 @@ class CampaignsController < ApplicationController
     end 
   end
 
+  def edit 
+    @red = Red.new if !@campaign.red 
+  end
+
+  def update 
+    if @campaign.update(permited_params) 
+      redirect_to root_path, notice: 'Campaña actualizada con éxito'
+    else 
+      byebug
+      render 'new'
+    end  
+  end
+
   private 
 
     def permited_params
-      params.require(:campaign).permit(:name, :description, :start_date, :finish_date, :client_id, :user_ids)
+      params.require(:campaign).permit(:name, :description, :start_date, :finish_date, :client_id, :user_ids, 
+        red_attributes: [:name])
     end
 
     def set_campaign

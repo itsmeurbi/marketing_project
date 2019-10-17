@@ -9,5 +9,6 @@
 #
 
 class Red < ApplicationRecord
-  belongs_to :campaign
+  has_one :campaign
+  has_many :nodos
 end

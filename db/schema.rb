@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191004052414) do
+ActiveRecord::Schema.define(version: 20191017042107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,9 @@ ActiveRecord::Schema.define(version: 20191004052414) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "client_id"
+    t.bigint "red_id"
     t.index ["client_id"], name: "index_campaigns_on_client_id"
+    t.index ["red_id"], name: "index_campaigns_on_red_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -82,14 +84,23 @@ ActiveRecord::Schema.define(version: 20191004052414) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.bigint "red_id"
+    t.index ["ancestry"], name: "index_nodos_on_ancestry"
+    t.index ["red_id"], name: "index_nodos_on_red_id"
+  end
+
+  create_table "nodos_users", id: false, force: :cascade do |t|
+    t.bigint "nodo_id"
+    t.bigint "user_id"
+    t.index ["nodo_id"], name: "index_nodos_users_on_nodo_id"
+    t.index ["user_id"], name: "index_nodos_users_on_user_id"
   end
 
   create_table "reds", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "campaign_id"
-    t.index ["campaign_id"], name: "index_reds_on_campaign_id"
   end
 
   create_table "representatives", force: :cascade do |t|
@@ -138,6 +149,9 @@ ActiveRecord::Schema.define(version: 20191004052414) do
   end
 
   add_foreign_key "campaigns", "clients"
-  add_foreign_key "reds", "campaigns"
+  add_foreign_key "campaigns", "reds"
+  add_foreign_key "nodos", "reds"
+  add_foreign_key "nodos_users", "nodos"
+  add_foreign_key "nodos_users", "users"
   add_foreign_key "users", "roles"
 end
