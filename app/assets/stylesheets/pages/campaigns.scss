@@ -1,3 +1,57 @@
 // Place all the styles related to the campaigns controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.edit-campaign-form {
+  padding-top: 20px;
+  width: 90%;
+
+  .edit-form {
+    display: flex;
+    margin: 20px 0;
+  }
+  
+  .red-campaign {
+    align-items: center;
+    display: flex;
+
+    .btns {
+      display: flex;
+      flex-direction: column;
+      margin-right: 30px;
+    }
+  }
+  
+  .red-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 250px 40px;
+  }
+  
+  #network-popUp, #add-child {
+    background-color: gray;
+    border-color: gray;
+    border-style: solid;
+    border-width: 3px;
+    display: none;
+    height: 120px;
+    left: 170px;
+    padding: 10px;
+    position: absolute;
+    text-align: center;
+    top: 350px;
+    width: 250px;
+    z-index: 299;
+  }
+  
+  #vis-container {
+    border: .5px solid gray;
+    height: 500px;
+    width: 800px;
+  }
+
+  h5 {
+    text-align: center;
+  }
+}

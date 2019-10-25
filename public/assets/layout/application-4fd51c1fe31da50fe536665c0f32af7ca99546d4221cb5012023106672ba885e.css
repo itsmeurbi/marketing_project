@@ -1,0 +1,11 @@
+/* line 1, app/assets/stylesheets/layout/application.scss */
+.app-container {
+  max-width: 100vw;
+  min-height: 92vh;
+  width: auto;
+}
+
+/* line 6, app/assets/stylesheets/layout/application.scss */
+.app-container .search {
+  display: flex;
+}
