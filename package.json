@@ -1,5 +1,26 @@
 {
   "name": "Marketing_project",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "@rails/webpacker": "^4.0.7",
+    "axios": "^0.19.0",
+    "bootstrap": "4.1.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.4.1",
+    "jquery-ui-dist": "^1.12.1",
+    "jquery-ujs": "^1.2.2",
+    "mdbootstrap": "^4.8.11",
+    "popper.js": "^1.16.0",
+    "turbolinks": "^5.2.0",
+    "vis": "^4.21.0-EOL",
+    "vis-network": "^6.1.1"
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/cinthyaflores/marketing_project.git",
+  "author": "cinthyaflores <lizeth.clfc@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack-dev-server": "^3.8.2"
+  }
 }

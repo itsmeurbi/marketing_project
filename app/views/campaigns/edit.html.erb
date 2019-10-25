@@ -1,18 +1,71 @@
 <h1> Editar Campaña </h1>
-<%= form_for @campaign, html: { class: 'two-columns' } do |f| %>
-  <div class="row">
-    <div class="col-5">
-      <%= render 'form', f: f%>
+<%= form_for @campaign, html: { class: 'edit-campaign-form' } do |f| %>
+  <h5> Información de la campaña </h5>
+  <div class="edit-form"> 
+    <%= render 'form', f: f %>
+  </div>
+  <div class="red-form"> 
+    <%= f.fields_for :red, @red do |red| %>
+      <h5> Nombre de la red </h5>
+      <%= red.text_field :name, placeholder: 'Nombre de la red', class: 'form-control' %>
+    <% end %>
+  </div>
+
+  <div class="red-campaign">
+
+    <div class="btns">
+      <input id="add-node" class="btn btn-primary mt-2" type="button" value= "Agregar Nodo">
+      <input id="delete-node" class="btn btn-primary mt-2" type="button" value= "Eliminar Nodo">  
+      <input id="edit-node" class="btn btn-primary my-2" type="button" value= "Agregar Personal"> 
     </div>
-    <div class="col-5">
-      <h5> Red semántica </h5>
-      <%= f.fields_for :red, @red do |red| %>
-        <%= red.text_field :name, placeholder: 'Nombre de la red', class: 'form-control' %>
-      <% end %>
+
+    <div id="vis-container"></div>
+
+    <div class="modal" id="add-node-modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle"> Agregar Nodo </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <input id="node-label" placeholder="Nombre del nuevo nodo" class="form-control">
+            <input id="camp-id" hidden="true" value="<%= @campaign.id %>"> 
+          </div>
+          <div class="modal-footer">
+            <input class="btn btn-primary" id="saveButton" type="button" value="Guardar" href= "<%= nodos_path %>">
+            <input class="btn btn-primary" id="cancelButton" type="button" value="Cancelar">
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="two-btns-column">
-      <%= f.submit 'Crear', class: 'btn btn-primary mt-5' %>
-      <%= link_to 'Regresar', root_path, class: 'btn btn-primary my-5'  %>
+
+  <div class="modal" id="add-employee-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle"> Agregar Personal </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= select :designer, :designer_id, designers.collect{ |d| [d.name, d.id] }, { prompt: 'Selecciona un Diseñador' }, { class: 'form-control' } %>
+          <%= select :generador, :generador_id, generadors.collect{ |g| [g.name, g.id] }, { prompt: 'Selecciona un Generador' }, { class: 'form-control' } %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="save-employees-btn"> Aceptar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+  <div class="two-btns-column my-4">
+      <%= f.submit 'Guardar', class: 'btn btn-primary mt-2' %>
+      <%= link_to 'Regresar', root_path, class: 'btn btn-primary my-2'  %>
   </div>
 <% end %>

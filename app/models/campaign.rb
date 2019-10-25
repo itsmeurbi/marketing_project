@@ -18,6 +18,6 @@ class Campaign < ApplicationRecord
   has_many :campaign_employees
   has_many :users, through: :campaign_employees
   belongs_to :client
-  belongs_to :red
+  belongs_to :red, optional: true
   accepts_nested_attributes_for :red, reject_if: :all_blank, allow_destroy: true
 end

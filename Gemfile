@@ -37,8 +37,8 @@ gem 'cocoon'
 gem 'devise'
 gem 'font-awesome-sass'
 gem 'jquery-rails'
-gem 'bootstrap-material-design', '~> 0.2.2'
 gem 'rolify'
+gem 'webpacker', '>= 4.0.x'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
