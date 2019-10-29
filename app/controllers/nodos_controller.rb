@@ -34,8 +34,14 @@ class NodosController < ApplicationController
         if node.users.ids.include?(params[:designer].to_i) && node.users.ids.include?(params[:generador].to_i)
           render json: "Los usuarios ya estan registrados"
         else
-          node.users << User.find(params[:designer]) if !node.users.ids.include?(params[:designer].to_i)
-          node.users << User.find(params[:generador]) if !node.users.ids.include?(params[:generador].to_i)
+          if !node.users.ids.include?(params[:designer].to_i)
+            node.users.delete(User.where(role_id: 4))
+            node.users << User.find(params[:designer]) 
+          end 
+          if !node.users.ids.include?(params[:generador].to_i)
+            node.users.delete(User.where(role_id: 3))
+            node.users << User.find(params[:generador])
+          end 
           render json: "Empleados registrados exitosamente"
         end
       end

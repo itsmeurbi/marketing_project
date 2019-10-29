@@ -1,41 +1,59 @@
 <h1> <%= t('dashboard.roles.admin') %> </h1>
 
-<h4> Campañas </h4>
-<table class="table">
-  <tr class="thead-light"> 
-    <th scope="col"> Nombre </th>
-    <th scope="col"> Fecha inicio </th>
-    <th scope="col"> Fecha fin </th>
-    <th scope="col"> Cliente </th>
-    <th scope="col"> Empresa / Corporativo </th>
-  </tr>
-  <% campaigns.each do |campaign| %>
-  <tr scope="row"> 
-    <td> <%= campaign.name %> </td>
-    <td> <%= campaign.start_date %> </td>
-    <td> <%= campaign.finish_date %> </td>
-    <td> <%= campaign.client.name %> </td>
-    <td> <%= corp_or_comp(campaign.id) %> </td>
-  </tr> 
-  <% end %>
-</table>
+<div id="home">
+  <h5> ESTADISTICAS Y MÁS COSITAS RH </h5>
+</div>
 
-<%= link_to 'Registrar Campaña', new_campaign_path, class: 'btn btn-primary my-4' %>
+<div id="admin-campaigns">
+  <h4> Campañas Registradas </h4>
+  <table class="table">
+    <tr class="thead-light"> 
+      <th scope="col"> Nombre </th>
+      <th scope="col"> Cliente </th>
+      <th scope="col"> Empresa / Corporativo </th>
+    </tr>
+    <% campaigns.each do |campaign| %>
+    <tr scope="row"> 
+      <td> <%= campaign.name %> </td>
+      <td> <%= campaign.client.name %> </td>
+      <td> <%= corp_or_comp(campaign.id) %> </td>
+    </tr> 
+    <% end %>
+  </table>
+  <%= link_to 'Registrar Campaña', new_campaign_path, class: 'btn btn-primary my-4' %>
+</div>
 
-<h4> Personal Registrado </h4>
-<table class="table">
-  <tr class="thead-light"> 
-    <th scope="col"> Nombre </th>
-    <th scope="col"> Área </th>
-    <th scope="col"> Fecha </th>
-  </tr>
-  <% users.each do |user| %>
-  <tr scope="row"> 
-    <td> <%= user.name %> </td>
-    <td> <%= user.role.descr %> </td>
-    <td> <%= l user.created_at, format: :short  %> </td>
-  </tr> 
-  <% end %>
-</table>
+<div id="admin-employees">
+  <h4> Personal Registrado </h4>
+  <table class="table">
+    <tr class="thead-light"> 
+      <th scope="col"> Nombre </th>
+      <th scope="col"> Área </th>
+      <th scope="col"> Fecha </th>
+    </tr>
+    <% users.each do |user| %>
+    <tr scope="row"> 
+      <td> <%= user.name %> </td>
+      <td> <%= user.role.descr %> </td>
+      <td> <%= l user.created_at, format: :short  %> </td>
+    </tr> 
+    <% end %>
+  </table>
+  <%= link_to 'Registrar Empleado', new_user_registration_path, class: 'btn btn-primary my-4'%>
+</div>
 
-<%= link_to 'Registrar Empleado', new_user_registration_path, class: 'btn btn-primary my-4'%>
+<div id="admin-clients">
+  <h4> Clientes Registrados </h4>
+  <table class="table">
+    <tr class="thead-light"> 
+      <th scope="col"> Nombre </th>
+      <th scope="col"> Empresa / Corporativo </th>
+    </tr>
+    <% clients.each do |client| %>
+    <tr scope="row"> 
+      <td> <%= client.name %> </td>
+      <td> <%= client.company ? client.company.name : client.corporate.name %> </td>
+    </tr> 
+    <% end %>
+  </table>
+</div>

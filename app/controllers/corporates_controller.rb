@@ -26,7 +26,9 @@ class CorporatesController < ApplicationController
   private 
 
   def corporate_params 
-    params.require(:corporate).permit(:name, :ceo_name, :razon_social, :address, :rfc, :companies_id, representative_attributes: [:name, :rfc, :email, :tel, :cel, :position], companies_attributes: [:name, :ceo_name, :razon_social, :address, :rfc])
+    params.require(:corporate).permit(:name, :ceo_name, :razon_social, :address, :rfc, :companies_id, 
+                                        representative_attributes: [:name, :rfc, :email, :tel, :cel, :position], 
+                                        companies_attributes: [:name, :ceo_name, :razon_social, :address, :rfc])
   end
 
   def update_companies_info(companies)

@@ -1,1 +1,15 @@
-
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <h3> Bienvenid@ <%= current_user.name %> </h3>
+  </div>
+  <ul class="list-unstyled components">
+    <li class="active">
+      <button type="button" id="home-btn" class="sidebar-btn mt-4"> <i class="fas fa-poll"></i> Inicio </button>
+    </li>
+    <% user_options.each do |o| %>
+      <li>
+        <button type="button" id="<%= o %>-btn" class="sidebar-btn mt-1"> <i class="fas fa-bullseye"></i> <%= o %> </button>
+      </li>
+    <% end %>
+  </ul>
+</nav>

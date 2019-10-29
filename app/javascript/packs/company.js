@@ -1,10 +1,13 @@
 $(document).on('turbolinks:load', function() {
   $('.corporate').hide();
+  $('#keep-rep').hide();
   $('#corp').on('click', function() {
     if ($(this).is(':checked')) {
       $('.corporate').show();
+      $('#keep-rep').show();
     } else {
       $('.corporate').hide();
+      $('#keep-rep').hide();
     }   
   });
 

@@ -1,53 +1,63 @@
-<h1> <%= t('dashboard.roles.sales') %> </h1>
+<h1 class="text-center"> Administrador de Finanzas </h1>
 
-<h4> Clientes Registrados </h4>
-<table class="table">
-  <tr class="thead-light"> 
-    <th scope="col"> Nombre </th>
-    <th scope="col"> Empresa / Corporativo </th>
-    <th scope="col"> Campaña </th>
-  </tr>
-  <% clients.each do |client| %>
-  <tr scope="row"> 
-    <td> <%= client.name %> </td>
-    <td> <%= client.company ? client.company.name : client.corporate.name %> </td>
-    <td> <%= campaign(client.id) %> </td>
-  </tr> 
-  <% end %>
-</table>
+<div id="home">
+  <h5> ESTADISTICAS Y MÁS COSITAS </h5>
+</div>
 
-<%= link_to 'Registrar Cliente', new_client_path, class: 'btn btn-primary mb-4'%>
-
-<h4> Empresas Registradas </h4>
-<table class="table">
-  <tr class="thead-light"> 
-    <th scope="col"> Nombre </th>
-    <th scope="col"> Representante </th>
-    <th scope="col"> Coorporativo </th>
-  </tr>
-  <% companies.each do |comp| %>
-  <tr scope="row"> 
-    <td> <%= comp.name %> </td>
-    <td> <%= comp.representative ? comp.representative.name : comp.corporate.representative.name %> </td>
-    <td> <%= get_corporate(comp.corporate_id) if comp.corporate_id != nil %> </td>
-  </tr> 
-  <% end %>
-</table>
-
-<%= link_to 'Registrar Empresa', new_company_path, class: 'btn btn-primary mb-4'%>
-
-<h4> Corporativos Registrados </h4>
-<table class="table">
-  <tr class="thead-light"> 
-    <th scope="col"> Nombre </th>
-    <th scope="col"> Representante </th>
-  </tr>
-  <% corporates.each do |corp| %>
+<div id="sales-clients">
+  <h4> Clientes Registrados </h4>
+  <table class="table">
+    <tr class="thead-light"> 
+      <th scope="col"> Nombre </th>
+      <th scope="col"> Empresa / Corporativo </th>
+      <th scope="col"> Campaña </th>
+    </tr>
+    <% clients.each do |client| %>
     <tr scope="row"> 
-      <td> <%= corp.name %> </td>
-      <td> <%= corp.representative.name %> </td>
+      <td> <%= client.name %> </td>
+      <td> <%= client.company ? client.company.name : client.corporate.name %> </td>
+      <td> <%= campaign(client.id) %> </td>
     </tr> 
-  <% end %>
-</table>
+    <% end %>
+  </table>
 
-<%= link_to 'Registrar Corporativo', new_corporate_path, class: 'btn btn-primary mb-4'%>
+  <%= link_to 'Registrar Cliente', new_client_path, class: 'btn btn-primary mb-4'%>
+</div>
+
+<div id="sales-companies">
+  <h4> Empresas Registradas </h4>
+  <table class="table">
+    <tr class="thead-light"> 
+      <th scope="col"> Nombre </th>
+      <th scope="col"> Representante </th>
+      <th scope="col"> Coorporativo </th>
+    </tr>
+    <% companies.each do |comp| %>
+    <tr scope="row"> 
+      <td> <%= comp.name %> </td>
+      <td> <%= comp.representative ? comp.representative.name : comp.corporate.representative.name %> </td>
+      <td> <%= get_corporate(comp.corporate_id) if comp.corporate_id != nil %> </td>
+    </tr> 
+    <% end %>
+  </table>
+
+  <%= link_to 'Registrar Empresa', new_company_path, class: 'btn btn-primary mb-4'%>
+</div>
+
+<div id="sales-corporates">
+  <h4> Corporativos Registrados </h4>
+  <table class="table">
+    <tr class="thead-light"> 
+      <th scope="col"> Nombre </th>
+      <th scope="col"> Representante </th>
+    </tr>
+    <% corporates.each do |corp| %>
+      <tr scope="row"> 
+        <td> <%= corp.name %> </td>
+        <td> <%= corp.representative.name %> </td>
+      </tr> 
+    <% end %>
+  </table>
+
+  <%= link_to 'Registrar Corporativo', new_corporate_path, class: 'btn btn-primary mb-4'%>
+</div>

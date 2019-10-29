@@ -20,7 +20,14 @@ require("jquery")
 require("jquery-ujs")
 require("popper.js")
 require("bootstrap")
-import "vis-network"
+require("cocoon")
+
 import "axios"
-import "packs/vis"
+import "packs/clients"
+import "packs/cocoon"
+import "packs/company"
+import "packs/corporate"
+import "packs/dashboard"
 import "packs/layout"
+import "packs/vis"
+import "vis-network"

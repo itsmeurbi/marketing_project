@@ -1,6 +1,82 @@
-.body-container {
-  align-items: center;
+.dashboard {
   display: flex;
-  flex-direction: column;
-  margin: 30px 50px;
+  width: 100vw;
+
+  #sidebar {
+    background-color: #343a40;
+    color: white;
+    flex-direction: column;
+    padding-top: 10px;
+    text-align: center;
+    width: 100vw;
+
+    .sidebar-btn {
+      background-color: #343a40;
+      border: 0;
+      color: white;
+      padding: 12px;
+      text-align: left;
+      width: 100%;
+
+      i {
+        margin: 0 5px;
+      }
+
+      @media only screen and (max-width: 700px) {
+        padding: 10px 15px;
+      }
+    }
+
+    .sidebar-btn:hover {
+      background-color: darkgray;
+      border: 0.1px solid rgb(27, 27, 27);
+      width: 100%;
+    }
+
+    @media only screen and (max-width: 700px) {
+      display: none;
+    }
+
+    @media only screen and (min-width: 701px) {
+      display: flex !important;
+      min-height: calc(100vh - 56px);
+      padding-top: 20px;
+      visibility: visible;
+      width: 280px;
+    }
+  }
+
+  .users-info {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    width: 100vw;
+
+    #home,
+    #admin-campaigns,
+    #admin-employees,
+    #admin-clients,
+    #com-campaigns,
+    #com-calendar,
+    #des-nodes,
+    #gen-nodes,
+    #rh-employees,
+    #sales-clients,
+    #sales-companies,
+    #sales-corporates,
+    #agency-admins {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      padding-top: 30px; 
+      width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 700px){
+    flex-direction: column;
+  }
 }
+
+

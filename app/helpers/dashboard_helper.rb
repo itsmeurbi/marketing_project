@@ -8,8 +8,12 @@ module DashboardHelper
     end 
   end
 
-  def campaigns 
+  def campaigns
     Campaign.order(:id)
+  end
+
+  def clients 
+    Client.order(:id)
   end
 
   def companies
@@ -40,4 +44,29 @@ module DashboardHelper
     return Campaign.find(camp).client.company.name if Campaign.find(camp).client.company
     return Campaign.find(camp).client.corporate.name if Campaign.find(camp).client.corporate
   end
+
+  def nodes(user_id)
+    Nodo.includes(:users).where("users.id = ?", user_id).references(:users)
+  end
+
+  def user_options 
+    case current_user.role_id
+    when 1
+      options = ["Campañas", "Empleados", "Clientes"]
+    when 2
+      options = ["Campañas", "Calendario"]
+    when 3
+      options = ["Tematicas"]
+    when 4
+      options = ["Tematicas"]
+    when 5
+      options = ["Empleados"]
+    when 6
+      options = ["Empresas", "Corporativos", "Clientes"]
+    when 7
+      options = ["Administradores"]
+    end
+    options
+  end
+
 end

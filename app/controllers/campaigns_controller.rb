@@ -3,6 +3,7 @@ class CampaignsController < ApplicationController
 
   def new
     @campaign = Campaign.new
+    @red = Red.new
   end
 
   def create 
@@ -48,11 +49,7 @@ class CampaignsController < ApplicationController
 
     def build_html
       @campaign = current_user.campaigns.find(params[:id])
-      if !@campaign.red 
-        @red = Red.new
-      else
-        @red = @campaign.red
-      end
+      @red = @campaign.red
     end
   
     def build_json
