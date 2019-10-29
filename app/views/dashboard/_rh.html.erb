@@ -1,18 +1,25 @@
 <h1> <%= t('dashboard.roles.rh') %> </h1>
-<h3> Empleados Registrados </h3>
-<table class="table">
-  <tr class="thead-light"> 
-    <th scope="col"> Nombre </th>
-    <th scope="col"> Rol </th>
-    <th scope="col"> Fecha de registro </th>
-  </tr>
-  <% users.each do |user| %>
-  <tr scope="row"> 
-    <td> <%= user.name %> </td>
-    <td> <%= user.role.descr %> </td>
-    <td> <%= l user.created_at, format: :short  %> </td>
-  </tr> 
-  <% end %>
-</table>
 
-<%= link_to 'Registrar Empleado', new_user_registration_path, class: 'btn btn-primary my-5'%>
+<div id="home">
+  <h5> ESTADISTICAS Y MÁS COSITAS RH </h5>
+</div>
+
+<div id="rh-employees">
+  <h3> Empleados Registrados </h3>
+  <table class="table">
+    <tr class="thead-light"> 
+      <th scope="col"> Nombre </th>
+      <th scope="col"> Rol </th>
+      <th scope="col"> Fecha de registro </th>
+    </tr>
+    <% users.each do |user| %>
+    <tr scope="row"> 
+      <td> <%= user.name %> </td>
+      <td> <%= user.role.descr %> </td>
+      <td> <%= l user.created_at, format: :short  %> </td>
+    </tr> 
+    <% end %>
+  </table>
+
+  <%= link_to 'Registrar Empleado', new_user_registration_path, class: 'btn btn-primary my-5'%>
+</div>

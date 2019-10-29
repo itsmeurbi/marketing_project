@@ -1,37 +1,38 @@
-<h1> Registrar Corporativo </h1>
-
-<%= form_for @corporate, html: { class: 'two-columns' } do |f| %>
-  <div class="row">
-    <div class="col-5">
-    <h5> Información del corporativo </h5>
-      <%= render 'shared/comp_corp_form', f: f %>
-    </div>
-    <div class="col-5">
-      <h4> Información del representante legal </h4>
-      <%= f.fields_for :representative, @repre do |rep| %>
-        <%= render 'representatives/form', f: rep %>
-      <% end %>
-    </div>
-  </div>
-  <div class="add-companies">
-    <a id="add-company" class="btn btn-primary"> Agregar Empresas </a>
-    <div class="companies">
-      <h5> Seleccionar empresas </h5>
-      <% '<p> No hay empresas registradas </p>' if Company.without_corporate %>
-      <% Company.without_corporate.each do |comp| %>
-        <%= check_box :companies_id, comp.id %>
-        <%= label :companies_id, comp.name %>
-      <% end %>
-      <div class="add-companies">
-        <%= f.fields_for :companies do |comp| %>
-          <%= render 'company_fields', f: comp %>
+<div class="d-flex align-items-center flex-column mt-4">
+  <h1> Registrar Corporativo </h1>
+  <%= form_for @corporate, html: { class: 'two-columns' } do |f| %>
+    <div class="row">
+      <div class="col-5">
+      <h5> Información del corporativo </h5>
+        <%= render 'shared/comp_corp_form', f: f %>
+      </div>
+      <div class="col-5">
+        <h4> Información del representante legal </h4>
+        <%= f.fields_for :representative, @repre do |rep| %>
+          <%= render 'representatives/form', f: rep %>
         <% end %>
-        <%= link_to_add_association 'Registrar Empresa', f, :companies, partial: 'company_fields' %>
       </div>
     </div>
-  </div>
-  <div class="buttons-div">
-    <%= f.submit "Crear", class: 'btn btn-primary'%>
-    <%= link_to 'Regresar', root_path, class: 'btn btn-primary' %>
-  </div>
-<% end %>
+    <div class="add-companies">
+      <a id="add-company" class="btn btn-primary"> Agregar Empresas </a>
+      <div class="companies">
+        <h5> Seleccionar empresas </h5>
+        <% '<p> No hay empresas registradas </p>' if Company.without_corporate %>
+        <% Company.without_corporate.each do |comp| %>
+          <%= check_box :companies_id, comp.id %>
+          <%= label :companies_id, comp.name %>
+        <% end %>
+        <div class="add-companies">
+          <%= f.fields_for :companies do |comp| %>
+            <%= render 'company_fields', f: comp %>
+          <% end %>
+          <%= link_to_add_association 'Registrar Empresa', f, :companies, partial: 'company_fields' %>
+        </div>
+      </div>
+    </div>
+    <div class="two-btns-column">
+      <%= f.submit "Crear", class: 'btn btn-primary mt-4'%>
+      <%= link_to 'Regresar', root_path, class: 'btn btn-primary mt-4' %>
+    </div>
+  <% end %>
+</div>

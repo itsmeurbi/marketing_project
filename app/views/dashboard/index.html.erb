@@ -1,1 +1,9 @@
-<%= render set_user %>
+<div class="dashboard">
+  <% if user_signed_in? %>
+    <input id="role" hidden="true" value= "<%= current_user.role.id %>" >
+    <%= render 'partials/sidebar' %>
+  <% end %>
+  <div class="users-info">
+    <%= render set_user %>
+  </div>
+</div>

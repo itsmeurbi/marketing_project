@@ -1,1 +1,23 @@
 <h1> <%= t('dashboard.roles.designer') %> </h1>
+
+<div id="home">
+  <h5> TAREAS PENDIENTES </h5>
+</div>
+
+<div id="des-nodes">
+  <h4> Temas Asignados </h4>
+  <table class="table">
+    <tr class="thead-light"> 
+      <th scope="col"> Nombre del Nodo </th>
+      <th scope="col"> Nodo Padre </th>
+      <th scope="col"> Campaña </th>
+    </tr>
+    <% nodes(current_user.id).each do |node| %>
+    <tr scope="row"> 
+      <td> <%= node.name %> </td>
+      <td> <%= node.parent.name %> </td>
+      <td> <%= node.red.name %> </td>
+    </tr> 
+    <% end %>
+  </table>
+</div>
